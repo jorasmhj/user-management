@@ -15,7 +15,8 @@ import { SortPeoplePipe } from './sort-people.pipe';
 import { UserService } from  './user.service';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { NotfoundComponent } from './notfound/notfound.component'
-import { routingComponents, appRoutes } from './app-routing.module'
+import { routingComponents, appRoutes } from './app-routing.module';
+import { HomeComponent } from './home/home.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { routingComponents, appRoutes } from './app-routing.module'
     FilterPipePipe,
     SortPeoplePipe,
     AboutUsComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
