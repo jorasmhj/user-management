@@ -1,0 +1,93 @@
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="doAdd()">
+  Add People
+</button>
+{{selectedCurrency}}
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="editMode ? editUser() : onSubmit()">
+				  <div class="form-group">
+				    <label for="Name">Name</label>
+				    <input type="text" class="form-control" name="name" placeholder="Enter name" [(ngModel)]="user.name">
+				  </div>
+          <div class="form-group">
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd"
+                     name="dp" [(ngModel)]="user.date" ngbDatepicker #d="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                  <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                </button>
+              </div>
+            </div>
+          </div>
+
+				  <div class="form-group">
+				    <label for="age">Age</label>
+				    <input type="text" class="form-control" name="age" placeholder="Age" [(ngModel)]="user.age">
+				    <small id="emailHelp" class="form-text text-muted">We'll never share your age with anyone else.</small>
+				  </div>
+				  <ngb-rating [(rate)]="currentRate" [max]="5" ></ngb-rating>
+					<hr>
+					<pre>Rate: <b>{{currentRate}}</b></pre>
+				  <button type="submit" class="btn btn-primary">Submit</button>
+			  </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container">
+	{{birthday | date:'full'}}
+	<br>
+	{{abc | currency }}
+  <br>
+  {{myNumber | sqrt}}
+
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<table class="table table-dark" *ngIf="people.length > 0">
+			  <thead>
+			    <tr>
+			    	<th>S.N</th>
+				    <th>Name</th>
+            <th>DOB</th>
+						<th>Age</th>
+						<th>Rating</th>
+						<th>Action</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr *ngFor="let person of (people | sortPeople); let i = index">
+			    	<td>{{i+1}}</td>
+			      <td>{{person.name}}</td>
+            <td>{{person.date | json}}</td>
+						<td>{{person.age}}</td>
+						<td>{{person.currentRate}}</td>
+						<td><a (click)="removePerson(i)" href="#">Delete</a> | <a data-toggle="modal" data-target="#exampleModal" href="#" (click)="doEdit(i)">Edit</a></td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+<br><br><br><br><br><br><br>
