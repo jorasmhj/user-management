@@ -20,7 +20,7 @@ import { routingComponents, appRoutes } from './app-routing.module'
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,s
+    HeaderComponent,
     MenuComponent,
     ContentComponent,
     FooterComponent,
