@@ -22,18 +22,53 @@ export class ContentComponent implements OnInit {
   currencies = ["aud","usd"]
   selectedCurrency = "s"
   model;
+  stud : any
+
+
 
   constructor(private userService : UserService ) { }
 
   ngOnInit() {
+    this.getUser();
+  }
+
+  getUser(){
     this.userService.getUser()
-      .then(user=>{
-        console.log(user)
-      }).
-      catch(error=>{
-        console.log(error);
+    .subscribe(userList=>{
+      this.stud = userList['data'];
+    },userListErr=>{
+      console.log(userListErr)
+    })
+      this.userService.profile()
+      .subscribe(userList=>{
+        this.stud = userList['data'];
+      },userListErr=>{
+        console.log(userListErr)
       })
   }
+
+
+
+
+  createtUser(){
+    let userobj = {
+       "firstName": "Saroj",
+        "lastName": "Maharjan",
+         "email": "jorasmhj@gmail.com",
+          "password": "123456789",
+           "address": "Lazimpat, Kathmandu",
+            "bio": "",
+             "dob": "",
+              "salary": ""
+    }
+    this.userService.createUser(userobj)
+    .subscribe(userList=>{
+      this.stud = userList['data'];
+    },userListErr=>{
+      console.log(userListErr)
+    })
+  }
+
 
   onSubmit(){
   	this.user.currentRate = this.currentRate

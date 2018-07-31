@@ -22,6 +22,18 @@ export class LoginComponent implements OnInit {
     if(formData.valid) {
       this.router.navigate(['/']);
       this.userService.loggedIn = true
+      let user = {
+        "email": "peter@klaven",
+        "password": "cityslicka"
+      }
+      this.userService.login(user).subscribe((data)=>{
+          if(data.token){
+            this.userService.saveToken(data.token);
+            this.router.navigate(['/']);
+          }
+      }, (err)=>{
+        console.error(err);
+      });
     }
     else
      this.error = "Can't sign you up at the moment";
