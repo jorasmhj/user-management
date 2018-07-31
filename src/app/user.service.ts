@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
+  loggedIn : boolean = false;
 
   constructor() { }
 
@@ -20,8 +21,6 @@ export class UserService {
       ];
       resolve(user);
     })
-    }
-
-
+  }
 
 }

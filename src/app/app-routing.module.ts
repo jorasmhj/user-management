@@ -6,6 +6,8 @@ import { FooterComponent } from './footer/footer.component'
 import { AboutUsComponent } from './about-us/about-us.component'
 import { NotfoundComponent } from './notfound/notfound.component'
 import { HomeComponent } from './home/home.component'
+import { LoginComponent } from './login/login.component'
+import { SignupComponent } from './signup/signup.component'
 
 export const routingComponents = [
     ContentComponent,
@@ -13,7 +15,9 @@ export const routingComponents = [
     HeaderComponent,
     FooterComponent,
     AboutUsComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    LoginComponent,
+    SignupComponent
 ]
 
 export const appRoutes : Routes = [
@@ -22,5 +26,7 @@ export const appRoutes : Routes = [
   { path : 'content', component :ContentComponent },
   { path : 'footer', component :FooterComponent },
   { path : 'notfound', component :NotfoundComponent },
+  { path : 'login', component :LoginComponent },
+  { path : 'signup', component :SignupComponent },
   { path : '**', pathMatch : 'full', redirectTo : '/notfound' }
 ];

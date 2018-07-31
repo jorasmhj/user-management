@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -16,7 +17,9 @@ import { UserService } from  './user.service';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { NotfoundComponent } from './notfound/notfound.component'
 import { routingComponents, appRoutes } from './app-routing.module';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component'
 
 @NgModule({
   declarations: [
@@ -31,11 +34,14 @@ import { HomeComponent } from './home/home.component'
     SortPeoplePipe,
     AboutUsComponent,
     NotfoundComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    BrowserAnimationsModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],

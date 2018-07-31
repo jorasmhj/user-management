@@ -1,26 +1,41 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">User Management</a>
+<nav class="navbar container navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/">User Management</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto right">
+    <ul class="navbar-nav ml-auto float-right">
       <!--<li class="nav-item" *ngFor="let i of menus">
         <a class="nav-link" href="#">{{i}}<span class="sr-only">(current)</span></a>
       </li>
     -->
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/">Home<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/about">About<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/content">User<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/notfound">404 page<span class="sr-only">(current)</span></a>
-      </li>
+      <ng-container *ngIf="userService.loggedIn else noLog">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about">About<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/content">User<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/notfound">404 page<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="cursor:pointer" (click)="logout()">Log Out<span class="sr-only">(current)</span></a>
+        </li>
+      </ng-container>
+      <ng-template #noLog>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Login<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/signup">Sign Up</a>
+        </li>
+      </ng-template>
     </ul>
   </div>
 </nav>
+
+<br>
