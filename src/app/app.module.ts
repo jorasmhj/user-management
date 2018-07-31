@@ -12,11 +12,13 @@ import { FooterComponent } from './footer/footer.component';
 import { SqrtPipe } from './sqrt.pipe';
 import { FilterPipePipe } from './filter-pipe.pipe';
 import { SortPeoplePipe } from './sort-people.pipe';
-import { UserService } from  './user.service';
-import { AboutUsComponent } from './about-us/about-us.component';
+import { UserService } from  './user.service'
+import { AboutUsComponent } from './about-us/about-us.component'
 import { NotfoundComponent } from './notfound/notfound.component'
-import { routingComponents, appRoutes } from './app-routing.module';
+import { routingComponents, appRoutes } from './app-routing.module'
 import { HomeComponent } from './home/home.component'
+import { HttpClientModule } from '@angular/common/http';
+import { SquarePipe } from './square.pipe'
 
 @NgModule({
   declarations: [
@@ -31,13 +33,15 @@ import { HomeComponent } from './home/home.component'
     SortPeoplePipe,
     AboutUsComponent,
     NotfoundComponent,
-    HomeComponent
+    HomeComponent,
+    SquarePipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     NgbModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [
     UserService
