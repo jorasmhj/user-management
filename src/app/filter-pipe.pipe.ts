@@ -21,8 +21,6 @@ export class FilterPipePipe implements PipeTransform {
       });
     }
     return value;
-
-    asd | sort
   }
 
 }

@@ -39,13 +39,6 @@ export class ContentComponent implements OnInit {
     },userListErr=>{
       console.log(userListErr)
     })
-<<<<<<< HEAD
-      this.userService.profile()
-      .subscribe(userList=>{
-        this.stud = userList['data'];
-      },userListErr=>{
-        console.log(userListErr)
-      })
   }
 
 
@@ -71,33 +64,6 @@ export class ContentComponent implements OnInit {
   }
 
 
-=======
-  }
-
-
-
-
-  createtUser(){
-    let userobj = {
-       "firstName": "Saroj",
-        "lastName": "Maharjan",
-         "email": "jorasmhj@gmail.com",
-          "password": "123456789",
-           "address": "Lazimpat, Kathmandu",
-            "bio": "",
-             "dob": "",
-              "salary": ""
-    }
-    this.userService.createUser(userobj)
-    .subscribe(userList=>{
-      this.stud = userList['data'];
-    },userListErr=>{
-      console.log(userListErr)
-    })
-  }
-
-
->>>>>>> 985ed59fb43d2b1a5a9b09f82e91f8a1907d3590
   onSubmit(){
   	this.user.currentRate = this.currentRate
     console.log(this.user.date);

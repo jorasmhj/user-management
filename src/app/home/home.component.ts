@@ -9,10 +9,14 @@ import { moveIn } from '../router.animations';
   host: {'[@moveIn]': ''}
 })
 export class HomeComponent implements OnInit {
+	currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   constructor() { }
 
   ngOnInit() {
+  	console.log(this.currentUser)
   }
+
+
 
 }

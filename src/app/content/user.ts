@@ -1,6 +1,7 @@
 export class User {
-	name
-	age
-	currentRate
-	date
+	id : string
+	name : string
+	dob : number
+	password : string
+	email : string
 }

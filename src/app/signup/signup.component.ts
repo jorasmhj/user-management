@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { moveIn, fallIn } from '../router.animations';
-
 import { UserService } from '../user.service';
+import { User } from '../content/user';
 
 @Component({
   selector: 'app-signup',
@@ -11,23 +11,23 @@ import { UserService } from '../user.service';
   animations: [moveIn(), fallIn()],
   host: {'[@moveIn]': ''}
 })
+
 export class SignupComponent implements OnInit {
-  state: string = '';
-  error: any;
-  email : string
-  password : string
+  model : any = <User>{} || []
 
   constructor(private router: Router, private userService : UserService) {}
 
   ngOnInit(){}
 
-  onSubmit(formData) {
-     if(formData.valid) {
-       this.router.navigate(['/']);
+  onSubmit(formData) { 
+   this.userService.createUser(this.model).subscribe(
+     (result)=>{
        this.userService.loggedIn = true
+       this.router.navigate(['/']);
+     },
+     (err)=>{
+       console.log(err)
      }
-     else
-      this.error = "Can't sign you up at the moment";
-   }
+   )}
 
 }

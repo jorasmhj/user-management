@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { moveIn } from '../router.animations';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { User } from '../content/user'
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ import { UserService } from '../user.service';
   host: {'[@moveIn]': ''}
 })
 export class LoginComponent implements OnInit {
-  username : string
+  error : string
+  user : any = <User> {} || []
 
   constructor(private router: Router, private userService : UserService) { }
 
@@ -19,24 +21,13 @@ export class LoginComponent implements OnInit {
   }
 
   login(formData){
-    if(formData.valid) {
+    this.userService.login(this.user).subscribe((data)=>{
       this.router.navigate(['/']);
-      this.userService.loggedIn = true
-      let user = {
-        "email": "peter@klaven",
-        "password": "cityslicka"
-      }
-      this.userService.login(user).subscribe((data)=>{
-          if(data.token){
-            this.userService.saveToken(data.token);
-            this.router.navigate(['/']);
-          }
-      }, (err)=>{
-        console.error(err);
-      });
-    }
-    else
-     this.error = "Can't sign you up at the moment";
+      localStorage.setItem('currentUser', JSON.stringify(data['token']));
+      this.userService.loggedIn = true;
+    }, (err)=>{
+      console.error(err);
+    });
   }
 
 }

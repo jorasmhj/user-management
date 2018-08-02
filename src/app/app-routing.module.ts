@@ -9,17 +9,6 @@ import { HomeComponent } from './home/home.component'
 import { LoginComponent } from './login/login.component'
 import { SignupComponent } from './signup/signup.component'
 
-export const routingComponents = [
-    ContentComponent,
-    HomeComponent,
-    HeaderComponent,
-    FooterComponent,
-    AboutUsComponent,
-    NotfoundComponent,
-    LoginComponent,
-    SignupComponent
-]
-
 export const appRoutes : Routes = [
   { path : '', component :HomeComponent },
   { path : 'about', component :AboutUsComponent },
